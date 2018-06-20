@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { EstadoService } from './shared/estado.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +9,19 @@ import { EstadoService } from './shared/estado.service';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  estados: EstadoModel[] = [];
+  estados: ValuesModel[];
 
   constructor(private service: EstadoService) { }
 
   ngOnInit() {
-    this.service.getEstados().subscribe(
-      res =>
-      this.estados = res);
-      console.log('Estados,',this.estados);
-      
+    this.service.getValues().subscribe(
+      res => {
+      this.estados = res;
+      console.log('res,', this.estados);
+    });
+
+
     }
-  }
 }
+
 

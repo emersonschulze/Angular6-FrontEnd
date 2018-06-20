@@ -10,6 +10,10 @@ export class EstadoService {
   constructor(private http: HttpClient) {
   }
 
+  getValues(): Observable<ValuesModel[]> {
+    return this.http.get<ValuesModel[]>(environment.apiUrl + '/values');    
+  } 
+
   getEstados(): Observable<EstadoModel[]> {
     return this.http.get<EstadoModel[]>(environment.apiUrl + '/Estados');    
   }   
